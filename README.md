@@ -5,3 +5,4 @@ Atualmente suporta as versões NFe 3.10 e 4.00
 
 ## Como usar
 
+var resultado = Analizar.GerarDTO("c:\caminhoseuxml\arquivo.XML");
