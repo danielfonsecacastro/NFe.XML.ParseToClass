@@ -99,6 +99,17 @@ namespace NFe.XML.ParseToClass
                 });
             }
 
+
+            foreach (var item in nfe.infNFe.cobr.dup)
+            {
+                resultado.Faturas.Add(new Fatura
+                {
+                    Data = DateTime.Parse(item.dVenc),
+                    NumeroFatura = item.nDup,
+                    Valor = ConverterParaDecimal(item.vDup)
+                });
+            }
+
             return resultado;
         }
 
@@ -132,6 +143,16 @@ namespace NFe.XML.ParseToClass
                     Quantidade = ConverterParaDecimal(item.prod.qCom.ToString()),
                     Unidade = item.prod.uCom,
                     Valor = ConverterParaDecimal(item.prod.vUnCom.ToString())
+                });
+            }
+
+            foreach (var item in nfe.infNFe.cobr.dup)
+            {
+                resultado.Faturas.Add(new Fatura
+                {
+                    Data = DateTime.Parse(item.dVenc),
+                    NumeroFatura = item.nDup,
+                    Valor = ConverterParaDecimal(item.vDup)
                 });
             }
 

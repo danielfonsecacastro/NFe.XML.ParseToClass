@@ -131,5 +131,47 @@ namespace NFe.XML.ParseToClass.Testes
             Assert.AreEqual(resultado.Unidade, "PR");
             Assert.AreEqual(resultado.Valor, 4.81M);
         }
+
+
+        [TestMethod]
+        public void DeveriaGerarDadosPrimeiraFaturaCorretamenteParaNFe410()
+        {
+            var resultado = Analizar.GerarDTO("teste400.XML").Faturas.First();
+
+            Assert.AreEqual(resultado.Data.ToShortDateString(), "09/06/2019");
+            Assert.AreEqual(resultado.NumeroFatura, "001");
+            Assert.AreEqual(resultado.Valor, 838.63M);
+        }
+
+        [TestMethod]
+        public void DeveriaGerarDadosUltimaFaturaCorretamenteParaNFe410()
+        {
+            var resultado = Analizar.GerarDTO("teste400.XML").Faturas.Last();
+
+            Assert.AreEqual(resultado.Data.ToShortDateString(), "08/08/2019");
+            Assert.AreEqual(resultado.NumeroFatura, "003");
+            Assert.AreEqual(resultado.Valor, 662.99M);
+        }
+
+
+        [TestMethod]
+        public void DeveriaGerarDadosPrimeiraFaturaCorretamenteParaNFe310()
+        {
+            var resultado = Analizar.GerarDTO("teste310.XML").Faturas.First();
+
+            Assert.AreEqual("25/01/2017", resultado.Data.ToShortDateString());
+            Assert.AreEqual("1  0002183871", resultado.NumeroFatura);
+            Assert.AreEqual(725.45M, resultado.Valor);
+        }
+
+        [TestMethod]
+        public void DeveriaGerarDadosUltimaFaturaCorretamenteParaNFe310()
+        {
+            var resultado = Analizar.GerarDTO("teste310.XML").Faturas.Last();
+
+            Assert.AreEqual("25/04/2017", resultado.Data.ToShortDateString());
+            Assert.AreEqual("1  0002183874", resultado.NumeroFatura);
+            Assert.AreEqual(722.00M, resultado.Valor);
+        }
     }
 }
