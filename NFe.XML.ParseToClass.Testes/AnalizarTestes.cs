@@ -29,14 +29,14 @@ namespace NFe.XML.ParseToClass.Testes
         {
             var resultado = Analizar.GerarDTO("teste400.XML");
 
-            Assert.AreEqual(resultado.Fornecedor.Bairro, "VL STA CATARINA");
-            Assert.AreEqual(resultado.Fornecedor.CEP, "04376006");
-            Assert.AreEqual(resultado.Fornecedor.CNPJ, "49748689000126");
-            Assert.AreEqual(resultado.Fornecedor.IE, "489021200990");
-            Assert.AreEqual(resultado.Fornecedor.Logradouro, "Rua Quinze de Novembro");
-            Assert.AreEqual(resultado.Fornecedor.MunicipioId, "3550308");
-            Assert.AreEqual(resultado.Fornecedor.UF, "SP");
-            Assert.AreEqual(resultado.Fornecedor.Pais, "Brasil");
+            Assert.AreEqual("VL STA CATARINA", resultado.Fornecedor.Bairro);
+            Assert.AreEqual("04376006", resultado.Fornecedor.CEP);
+            Assert.AreEqual("49748689000126", resultado.Fornecedor.CNPJ);
+            Assert.AreEqual("489021200990", resultado.Fornecedor.IE);
+            Assert.AreEqual("Rua Quinze de Novembro", resultado.Fornecedor.Logradouro);
+            Assert.AreEqual("3550308", resultado.Fornecedor.MunicipioId);
+            Assert.AreEqual("SP", resultado.Fornecedor.UF);
+            Assert.AreEqual("Brasil", resultado.Fornecedor.Pais);
         }
 
         [TestMethod]
@@ -44,10 +44,10 @@ namespace NFe.XML.ParseToClass.Testes
         {
             var resultado = Analizar.GerarDTO("teste400.XML");
 
-            Assert.AreEqual(resultado.Fornecedor.CNPJ, "49748689000126");
-            Assert.AreEqual(resultado.Fornecedor.IE, "489021200990");
-            Assert.AreEqual(resultado.Fornecedor.Nome, "Laís e Pedro Henrique Comercio de Bebidas ME");
-            Assert.AreEqual(resultado.Fornecedor.NomeFantasia, "LaísME");
+            Assert.AreEqual("49748689000126", resultado.Fornecedor.CNPJ);
+            Assert.AreEqual("489021200990", resultado.Fornecedor.IE);
+            Assert.AreEqual("Laís e Pedro Henrique Comercio de Bebidas ME", resultado.Fornecedor.Nome);
+            Assert.AreEqual("LaísME", resultado.Fornecedor.NomeFantasia);
         }
 
         [TestMethod]
@@ -55,14 +55,14 @@ namespace NFe.XML.ParseToClass.Testes
         {
             var resultado = Analizar.GerarDTO("teste310.XML");
 
-            Assert.AreEqual(resultado.Fornecedor.Bairro, "Vila São João");
-            Assert.AreEqual(resultado.Fornecedor.CEP, "05308000");
-            Assert.AreEqual(resultado.Fornecedor.CNPJ, "65952835000197");
-            Assert.AreEqual(resultado.Fornecedor.IE, "569927446281");
-            Assert.AreEqual(resultado.Fornecedor.Logradouro, "Rua Santa Cruz");
-            Assert.AreEqual(resultado.Fornecedor.MunicipioId, "3550308");
-            Assert.AreEqual(resultado.Fornecedor.UF, "SP");
-            Assert.AreEqual(resultado.Fornecedor.Pais, "BRASIL");
+            Assert.AreEqual("Vila São João", resultado.Fornecedor.Bairro);
+            Assert.AreEqual("05308000", resultado.Fornecedor.CEP);
+            Assert.AreEqual("65952835000197", resultado.Fornecedor.CNPJ);
+            Assert.AreEqual("569927446281", resultado.Fornecedor.IE);
+            Assert.AreEqual("Rua Santa Cruz", resultado.Fornecedor.Logradouro);
+            Assert.AreEqual("3550308", resultado.Fornecedor.MunicipioId);
+            Assert.AreEqual("SP", resultado.Fornecedor.UF);
+            Assert.AreEqual("BRASIL", resultado.Fornecedor.Pais);
         }
 
         [TestMethod]
@@ -70,10 +70,10 @@ namespace NFe.XML.ParseToClass.Testes
         {
             var resultado = Analizar.GerarDTO("teste310.XML");
 
-            Assert.AreEqual(resultado.Fornecedor.CNPJ, "65952835000197");
-            Assert.AreEqual(resultado.Fornecedor.IE, "569927446281");
-            Assert.AreEqual(resultado.Fornecedor.Nome, "Enrico e Olivia Mudanças ME.");
-            Assert.AreEqual(resultado.Fornecedor.NomeFantasia, "EnricoME");
+            Assert.AreEqual("65952835000197", resultado.Fornecedor.CNPJ);
+            Assert.AreEqual("569927446281", resultado.Fornecedor.IE);
+            Assert.AreEqual("Enrico e Olivia Mudanças ME.", resultado.Fornecedor.Nome);
+            Assert.AreEqual("EnricoME", resultado.Fornecedor.NomeFantasia);
         }
 
         [TestMethod]
@@ -81,13 +81,13 @@ namespace NFe.XML.ParseToClass.Testes
         {
             var resultado = Analizar.GerarDTO("teste400.XML").Produtos.First();
 
-            Assert.AreEqual(resultado.Codigo, "2445-055");
-            Assert.AreEqual(resultado.CodigoEAN, "7899033234918");
-            Assert.AreEqual(resultado.NCM, "87149310");
-            Assert.AreEqual(resultado.Nome, "BLOCAGEM P/ CUBOS CLY ALUM  DIANT/TRAS");
-            Assert.AreEqual(resultado.Quantidade, 3);
-            Assert.AreEqual(resultado.Unidade, "UN");
-            Assert.AreEqual(resultado.Valor, 15.37M);
+            Assert.AreEqual("2445-055", resultado.Codigo);
+            Assert.AreEqual("7899033234918", resultado.CodigoEAN);
+            Assert.AreEqual("87149310", resultado.NCM);
+            Assert.AreEqual("BLOCAGEM P/ CUBOS CLY ALUM  DIANT/TRAS", resultado.Nome);
+            Assert.AreEqual(3, resultado.Quantidade);
+            Assert.AreEqual("UN", resultado.Unidade);
+            Assert.AreEqual(15.37M, resultado.Valor);
         }
 
         [TestMethod]
@@ -95,13 +95,13 @@ namespace NFe.XML.ParseToClass.Testes
         {
             var resultado = Analizar.GerarDTO("teste400.XML").Produtos.Last();
 
-            Assert.AreEqual(resultado.Codigo, "4267-055");
-            Assert.AreEqual(resultado.CodigoEAN, "7899033272743");
-            Assert.AreEqual(resultado.NCM, "87149990");
-            Assert.AreEqual(resultado.Nome, "ARANHA EXPANSIVA EM ALUMINIO");
-            Assert.AreEqual(resultado.Quantidade, 1);
-            Assert.AreEqual(resultado.Unidade, "UN");
-            Assert.AreEqual(resultado.Valor, 45.50M);
+            Assert.AreEqual("4267-055", resultado.Codigo);
+            Assert.AreEqual("7899033272743", resultado.CodigoEAN);
+            Assert.AreEqual("87149990", resultado.NCM);
+            Assert.AreEqual("ARANHA EXPANSIVA EM ALUMINIO", resultado.Nome);
+            Assert.AreEqual(1, resultado.Quantidade);
+            Assert.AreEqual("UN", resultado.Unidade);
+            Assert.AreEqual(45.50M, resultado.Valor);
         }
 
         [TestMethod]
@@ -109,13 +109,13 @@ namespace NFe.XML.ParseToClass.Testes
         {
             var resultado = Analizar.GerarDTO("teste310.XML").Produtos.First();
 
-            Assert.AreEqual(resultado.Codigo, "39069");
-            Assert.AreEqual(resultado.CodigoEAN, "");
-            Assert.AreEqual(resultado.NCM, "64041100");
-            Assert.AreEqual(resultado.Nome, "SAPATILHA URBANA GIRO GRYND PTO/BCO T.43");
-            Assert.AreEqual(resultado.Quantidade, 1);
-            Assert.AreEqual(resultado.Unidade, "PR");
-            Assert.AreEqual(resultado.Valor, 318.60M);
+            Assert.AreEqual("39069", resultado.Codigo);
+            Assert.AreEqual("", resultado.CodigoEAN);
+            Assert.AreEqual("64041100", resultado.NCM);
+            Assert.AreEqual("SAPATILHA URBANA GIRO GRYND PTO/BCO T.43", resultado.Nome);
+            Assert.AreEqual(1, resultado.Quantidade);
+            Assert.AreEqual("PR", resultado.Unidade);
+            Assert.AreEqual(318.60M, resultado.Valor);
         }
 
         [TestMethod]
@@ -123,13 +123,13 @@ namespace NFe.XML.ParseToClass.Testes
         {
             var resultado = Analizar.GerarDTO("teste310.XML").Produtos.Last();
 
-            Assert.AreEqual(resultado.Codigo, "6430");
-            Assert.AreEqual(resultado.CodigoEAN, "");
-            Assert.AreEqual(resultado.NCM, "87149490");
-            Assert.AreEqual(resultado.Nome, "SAPATA SPEED 450 50MM PTO");
-            Assert.AreEqual(resultado.Quantidade, 2);
-            Assert.AreEqual(resultado.Unidade, "PR");
-            Assert.AreEqual(resultado.Valor, 4.81M);
+            Assert.AreEqual("6430", resultado.Codigo);
+            Assert.AreEqual("", resultado.CodigoEAN);
+            Assert.AreEqual("87149490", resultado.NCM);
+            Assert.AreEqual("SAPATA SPEED 450 50MM PTO", resultado.Nome);
+            Assert.AreEqual(2, resultado.Quantidade);
+            Assert.AreEqual("PR", resultado.Unidade);
+            Assert.AreEqual(4.81M, resultado.Valor);
         }
 
 
@@ -138,9 +138,9 @@ namespace NFe.XML.ParseToClass.Testes
         {
             var resultado = Analizar.GerarDTO("teste400.XML").Faturas.First();
 
-            Assert.AreEqual(resultado.Data.ToShortDateString(), "09/06/2019");
-            Assert.AreEqual(resultado.NumeroFatura, "001");
-            Assert.AreEqual(resultado.Valor, 838.63M);
+            Assert.AreEqual("09/06/2019", resultado.Data.ToShortDateString());
+            Assert.AreEqual("001", resultado.NumeroFatura);
+            Assert.AreEqual(838.63M, resultado.Valor);
         }
 
         [TestMethod]
@@ -148,9 +148,9 @@ namespace NFe.XML.ParseToClass.Testes
         {
             var resultado = Analizar.GerarDTO("teste400.XML").Faturas.Last();
 
-            Assert.AreEqual(resultado.Data.ToShortDateString(), "08/08/2019");
-            Assert.AreEqual(resultado.NumeroFatura, "003");
-            Assert.AreEqual(resultado.Valor, 662.99M);
+            Assert.AreEqual("08/08/2019", resultado.Data.ToShortDateString());
+            Assert.AreEqual("003", resultado.NumeroFatura);
+            Assert.AreEqual(662.99M, resultado.Valor);
         }
 
 
