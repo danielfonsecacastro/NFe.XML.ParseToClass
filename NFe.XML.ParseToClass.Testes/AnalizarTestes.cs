@@ -138,7 +138,7 @@ namespace NFe.XML.ParseToClass.Testes
         {
             var resultado = Analizar.GerarDTO("teste400.XML").Faturas.First();
 
-            Assert.AreEqual("09/06/2019", resultado.Data.ToShortDateString());
+            Assert.AreEqual("09/06/2019", resultado.Data.ToString("dd/MM/yyyy"));
             Assert.AreEqual("001", resultado.NumeroFatura);
             Assert.AreEqual(838.63M, resultado.Valor);
         }
@@ -148,7 +148,7 @@ namespace NFe.XML.ParseToClass.Testes
         {
             var resultado = Analizar.GerarDTO("teste400.XML").Faturas.Last();
 
-            Assert.AreEqual("08/08/2019", resultado.Data.ToShortDateString());
+            Assert.AreEqual("08/08/2019", resultado.Data.ToString("dd/MM/yyyy"));
             Assert.AreEqual("003", resultado.NumeroFatura);
             Assert.AreEqual(662.99M, resultado.Valor);
         }
@@ -159,7 +159,7 @@ namespace NFe.XML.ParseToClass.Testes
         {
             var resultado = Analizar.GerarDTO("teste310.XML").Faturas.First();
 
-            Assert.AreEqual("25/01/2017", resultado.Data.ToShortDateString());
+            Assert.AreEqual("25/01/2017", resultado.Data.ToString("dd/MM/yyyy"));
             Assert.AreEqual("1  0002183871", resultado.NumeroFatura);
             Assert.AreEqual(725.45M, resultado.Valor);
         }
@@ -169,7 +169,7 @@ namespace NFe.XML.ParseToClass.Testes
         {
             var resultado = Analizar.GerarDTO("teste310.XML").Faturas.Last();
 
-            Assert.AreEqual("25/04/2017", resultado.Data.ToShortDateString());
+            Assert.AreEqual("25/04/2017", resultado.Data.ToString("dd/MM/yyyy"));
             Assert.AreEqual("1  0002183874", resultado.NumeroFatura);
             Assert.AreEqual(722.00M, resultado.Valor);
         }
