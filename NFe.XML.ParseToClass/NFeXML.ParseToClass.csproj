@@ -12,8 +12,8 @@
     <ProjectGuid>{C8AA6114-0E1E-46AF-BB23-5818B8483C4F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NFe.XML.ParseToClass</RootNamespace>
-    <AssemblyName>NFe.XML.ParseToClass</AssemblyName>
+    <RootNamespace>NFeXML.ParseToClass</RootNamespace>
+    <AssemblyName>NFeXML.ParseToClass</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

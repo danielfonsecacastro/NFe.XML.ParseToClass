@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFe.XML.ParseToClass.Testes", "NFe.XML.ParseToClass.Testes\NFe.XML.ParseToClass.Testes.csproj", "{967FA49B-8050-43CA-860B-5B9CF843F595}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFe.XML.ParseToClass", "NFe.XML.ParseToClass\NFe.XML.ParseToClass.csproj", "{C8AA6114-0E1E-46AF-BB23-5818B8483C4F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFeXML.ParseToClass", "NFe.XML.ParseToClass\NFeXML.ParseToClass.csproj", "{C8AA6114-0E1E-46AF-BB23-5818B8483C4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

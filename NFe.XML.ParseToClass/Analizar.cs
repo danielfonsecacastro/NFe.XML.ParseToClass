@@ -1,4 +1,4 @@
-﻿using NFe.XML.ParseToClass.DTOs;
+﻿using NFeXML.ParseToClass.DTOs;
 using nfeV400;
 using System;
 using System.Globalization;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace NFe.XML.ParseToClass
+namespace NFeXML.ParseToClass
 {
     public class Analizar
     {

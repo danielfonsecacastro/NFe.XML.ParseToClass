@@ -56,9 +56,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NFe.XML.ParseToClass\NFe.XML.ParseToClass.csproj">
+    <ProjectReference Include="..\NFe.XML.ParseToClass\NFeXML.ParseToClass.csproj">
       <Project>{c8aa6114-0e1e-46af-bb23-5818b8483c4f}</Project>
-      <Name>NFe.XML.ParseToClass</Name>
+      <Name>NFeXML.ParseToClass</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿namespace NFe.XML.ParseToClass.DTOs
+﻿namespace NFeXML.ParseToClass.DTOs
 {
     public class FornecedorDTO
     {
