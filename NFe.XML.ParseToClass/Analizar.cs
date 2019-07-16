@@ -99,15 +99,17 @@ namespace NFe.XML.ParseToClass
                 });
             }
 
-
-            foreach (var item in nfe.infNFe.cobr.dup)
+            if (nfe.infNFe != null && nfe.infNFe.cobr != null)
             {
-                resultado.Faturas.Add(new Fatura
+                foreach (var item in nfe.infNFe.cobr.dup)
                 {
-                    Data = DateTime.Parse(item.dVenc),
-                    NumeroFatura = item.nDup,
-                    Valor = ConverterParaDecimal(item.vDup)
-                });
+                    resultado.Faturas.Add(new Fatura
+                    {
+                        Data = DateTime.Parse(item.dVenc),
+                        NumeroFatura = item.nDup,
+                        Valor = ConverterParaDecimal(item.vDup)
+                    });
+                }
             }
 
             return resultado;
