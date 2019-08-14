@@ -15,5 +15,9 @@ namespace NFeXML.ParseToClass.DTOs
         public string CodigoEAN { get; set; }
         public decimal Quantidade { get; set; }
         public string NCM { get; set; }
+        public decimal ValorIPI { get; set; }
+        public decimal ValorICMS { get; set; }
+        public decimal ValorPIS { get; set; }
+        public decimal ValorCOFINS { get; set; }
     }
 }

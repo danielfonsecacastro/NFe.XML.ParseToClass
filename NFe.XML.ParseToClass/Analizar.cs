@@ -1,11 +1,16 @@
-﻿using NFeXML.ParseToClass.DTOs;
+﻿using NFe.Classes.Servicos.DistribuicaoDFe.Schemas;
 using nfeV400;
+using NFeXML.ParseToClass.DTOs;
 using System;
 using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+using NFe.Utils;
+using NFe.Classes.Informacoes.Detalhe.Tributacao.Federal.Tipos;
+using NFe.Classes.Informacoes.Detalhe.Tributacao.Federal;
+using NFe.Classes;
 
 namespace NFeXML.ParseToClass
 {
@@ -60,43 +65,50 @@ namespace NFeXML.ParseToClass
 
         private static decimal ConverterParaDecimal(string valor)
         {
-            return Math.Round(decimal.Parse(valor.Replace(".", ","), new CultureInfo("pt-BR")), 2);
+            try
+            {
+                return Math.Round(decimal.Parse(valor.Replace(".", ","), new CultureInfo("pt-BR")), 2);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
 
         public static ResultadoDTO GerarDTO(string caminhoXML)
         {
             var resultado = new ResultadoDTO();
-            var nfe = Nfe400(caminhoXML);
-
-            if (nfe.infNFe.versao == "3.10")
-                return GerarDTODaNFe3100(caminhoXML);
+            var nfe = NFe.Utils.NFe.ExtNFe.CarregarDeArquivoXml(new NFe.Classes.NFe(), caminhoXML);
 
             resultado.Fornecedor.Bairro = nfe.infNFe.emit.enderEmit.xBairro;
             resultado.Fornecedor.CEP = nfe.infNFe.emit.enderEmit.CEP;
             resultado.Fornecedor.Logradouro = nfe.infNFe.emit.enderEmit.xLgr;
-            resultado.Fornecedor.MunicipioId = nfe.infNFe.emit.enderEmit.cMun;
+            resultado.Fornecedor.MunicipioId = nfe.infNFe.emit.enderEmit.cMun.ToString();
             resultado.Fornecedor.Numero = nfe.infNFe.emit.enderEmit.nro;
             resultado.Fornecedor.Pais = nfe.infNFe.emit.enderEmit.xPais.ToString();
-            resultado.Fornecedor.Telefone = nfe.infNFe.emit.enderEmit.fone;
+            resultado.Fornecedor.Telefone = nfe.infNFe.emit.enderEmit.fone == null ? "" : nfe.infNFe.emit.enderEmit.fone.ToString();
             resultado.Fornecedor.UF = nfe.infNFe.emit.enderEmit.UF.ToString();
 
-            resultado.Fornecedor.CNPJ = nfe.infNFe.emit.Item;
+            resultado.Fornecedor.CNPJ = nfe.infNFe.emit.CNPJ;
             resultado.Fornecedor.IE = nfe.infNFe.emit.IE;
             resultado.Fornecedor.Nome = nfe.infNFe.emit.xNome;
             resultado.Fornecedor.NomeFantasia = nfe.infNFe.emit.xFant;
 
             foreach (var item in nfe.infNFe.det)
             {
-                resultado.Produtos.Add(new ProdutoDTO
+                var produto = new ProdutoDTO
                 {
                     Codigo = item.prod.cProd,
                     CodigoEAN = item.prod.cEAN,
                     NCM = item.prod.NCM,
                     Nome = item.prod.xProd,
-                    Quantidade = ConverterParaDecimal(item.prod.qCom),
+                    Quantidade = item.prod.qCom,
                     Unidade = item.prod.uCom,
-                    Valor = ConverterParaDecimal(item.prod.vUnCom)
-                });
+                    Valor = item.prod.vUnTrib.Arredondar(2),
+                    ValorIPI = ObterValorIPI(item.imposto.IPI.TipoIPI).Arredondar(2)
+                };
+
+                resultado.Produtos.Add(produto);
             }
 
             if (nfe.infNFe != null && nfe.infNFe.cobr != null)
@@ -105,9 +117,9 @@ namespace NFeXML.ParseToClass
                 {
                     resultado.Faturas.Add(new Fatura
                     {
-                        Data = DateTime.Parse(item.dVenc),
+                        Data = item.dVenc ?? new DateTime(),
                         NumeroFatura = item.nDup,
-                        Valor = ConverterParaDecimal(item.vDup)
+                        Valor = item.vDup
                     });
                 }
             }
@@ -115,50 +127,15 @@ namespace NFeXML.ParseToClass
             return resultado;
         }
 
-        private static ResultadoDTO GerarDTODaNFe3100(string caminhoXML)
+        private static decimal ObterValorIPI(IPIBasico tipoIPI)
         {
-            var resultado = new ResultadoDTO();
-            var nfe = Nfe310(caminhoXML);
-
-            resultado.Fornecedor.Bairro = nfe.infNFe.emit.enderEmit.xBairro;
-            resultado.Fornecedor.CEP = nfe.infNFe.emit.enderEmit.CEP;
-            resultado.Fornecedor.Logradouro = nfe.infNFe.emit.enderEmit.xLgr;
-            resultado.Fornecedor.MunicipioId = nfe.infNFe.emit.enderEmit.cMun;
-            resultado.Fornecedor.Numero = nfe.infNFe.emit.enderEmit.nro;
-            resultado.Fornecedor.Pais = nfe.infNFe.emit.enderEmit.xPais.ToString();
-            resultado.Fornecedor.Telefone = nfe.infNFe.emit.enderEmit.fone;
-            resultado.Fornecedor.UF = nfe.infNFe.emit.enderEmit.UF.ToString();
-
-            resultado.Fornecedor.CNPJ = nfe.infNFe.emit.Item;
-            resultado.Fornecedor.IE = nfe.infNFe.emit.IE;
-            resultado.Fornecedor.Nome = nfe.infNFe.emit.xNome;
-            resultado.Fornecedor.NomeFantasia = nfe.infNFe.emit.xFant;
-
-            foreach (var item in nfe.infNFe.det)
+            if (tipoIPI is IPITrib)
             {
-                resultado.Produtos.Add(new ProdutoDTO
-                {
-                    Codigo = item.prod.cProd,
-                    CodigoEAN = item.prod.cEAN,
-                    NCM = item.prod.NCM,
-                    Nome = item.prod.xProd,
-                    Quantidade = ConverterParaDecimal(item.prod.qCom.ToString()),
-                    Unidade = item.prod.uCom,
-                    Valor = ConverterParaDecimal(item.prod.vUnCom.ToString())
-                });
+                var ipi = tipoIPI as IPITrib;
+                return ipi.vIPI ?? 0;
             }
 
-            foreach (var item in nfe.infNFe.cobr.dup)
-            {
-                resultado.Faturas.Add(new Fatura
-                {
-                    Data = DateTime.Parse(item.dVenc),
-                    NumeroFatura = item.nDup,
-                    Valor = ConverterParaDecimal(item.vDup)
-                });
-            }
-
-            return resultado;
+            return 0;
         }
     }
 }
