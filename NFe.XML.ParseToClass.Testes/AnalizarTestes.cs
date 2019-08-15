@@ -106,6 +106,21 @@ namespace NFe.XML.ParseToClass.Testes
         }
 
         [TestMethod]
+        public void DeveriaGerarDadosUltimoProdutoCorretamenteParaNFe410NullException()
+        {
+            var resultado = Analizar.GerarDTO("teste400NullException.XML").Produtos.Last();
+
+            Assert.AreEqual("002638", resultado.Codigo);
+            Assert.AreEqual("SEM GTIN", resultado.CodigoEAN);
+            Assert.AreEqual("87120010", resultado.NCM);
+            Assert.AreEqual("BICICLETA FKS TRAIL 29 MTB 27V TAM. M YQ18F990046", resultado.Nome);
+            Assert.AreEqual(1, resultado.Quantidade);
+            Assert.AreEqual("UN", resultado.Unidade);
+            Assert.AreEqual(3816M, resultado.Valor);
+        }
+
+
+        [TestMethod]
         public void DeveriaGerarDadosPrimeiroProdutoCorretamenteParaNFe310()
         {
             var resultado = Analizar.GerarDTO("teste310.XML").Produtos.First();
@@ -143,6 +158,8 @@ namespace NFe.XML.ParseToClass.Testes
             Assert.AreEqual("001", resultado.NumeroFatura);
             Assert.AreEqual(838.63M, resultado.Valor);
         }
+
+       
 
         [TestMethod]
         public void DeveriaGerarDadosUltimaFaturaCorretamenteParaNFe410()

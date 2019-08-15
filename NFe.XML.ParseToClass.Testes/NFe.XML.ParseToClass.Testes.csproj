@@ -62,6 +62,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="teste400NullException.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="teste310.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

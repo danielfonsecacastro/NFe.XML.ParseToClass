@@ -11,6 +11,8 @@ using NFe.Utils;
 using NFe.Classes.Informacoes.Detalhe.Tributacao.Federal.Tipos;
 using NFe.Classes.Informacoes.Detalhe.Tributacao.Federal;
 using NFe.Classes;
+using NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual.Tipos;
+using NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual;
 
 namespace NFeXML.ParseToClass
 {
@@ -105,7 +107,8 @@ namespace NFeXML.ParseToClass
                     Quantidade = item.prod.qCom,
                     Unidade = item.prod.uCom,
                     Valor = item.prod.vUnTrib.Arredondar(2),
-                    ValorIPI = ObterValorIPI(item.imposto.IPI.TipoIPI).Arredondar(2)
+                    ValorIPI = item.imposto.IPI != null ? ObterValorIPI(item.imposto.IPI.TipoIPI).Arredondar(2) : 0,
+                    ValorICMSST = item.imposto.ICMS != null ? ObterValorICMSST(item.imposto.ICMS.TipoICMS).Arredondar(2) : 0,
                 };
 
                 resultado.Produtos.Add(produto);
@@ -125,6 +128,35 @@ namespace NFeXML.ParseToClass
             }
 
             return resultado;
+        }
+
+        private static decimal ObterValorICMSST(ICMSBasico tipoICMS)
+        {
+            if (tipoICMS is ICMS10)
+            {
+                var icms = tipoICMS as ICMS10;
+                return icms.vICMSST;
+            }
+
+            if (tipoICMS is ICMS30)
+            {
+                var icms = tipoICMS as ICMS30;
+                return icms.vICMSST;
+            }
+
+            if (tipoICMS is ICMS60)
+            {
+                var icms = tipoICMS as ICMS60;
+                return icms.vICMSSubstituto ?? 0;
+            }
+
+            if (tipoICMS is ICMS70)
+            {
+                var icms = tipoICMS as ICMS70;
+                return icms.vICMSST;
+            }
+
+            return 0;
         }
 
         private static decimal ObterValorIPI(IPIBasico tipoIPI)
