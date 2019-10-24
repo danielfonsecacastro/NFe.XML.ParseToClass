@@ -87,7 +87,7 @@ namespace NFeXML.ParseToClass
             resultado.Fornecedor.Logradouro = nfe.infNFe.emit.enderEmit.xLgr;
             resultado.Fornecedor.MunicipioId = nfe.infNFe.emit.enderEmit.cMun.ToString();
             resultado.Fornecedor.Numero = nfe.infNFe.emit.enderEmit.nro;
-            resultado.Fornecedor.Pais = nfe.infNFe.emit.enderEmit.xPais.ToString();
+            resultado.Fornecedor.Pais = nfe.infNFe.emit.enderEmit.xPais;
             resultado.Fornecedor.Telefone = nfe.infNFe.emit.enderEmit.fone == null ? "" : nfe.infNFe.emit.enderEmit.fone.ToString();
             resultado.Fornecedor.UF = nfe.infNFe.emit.enderEmit.UF.ToString();
 
