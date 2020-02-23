@@ -65,22 +65,17 @@ namespace NFeXML.ParseToClass
             return proc.NFe;
         }
 
-        private static decimal ConverterParaDecimal(string valor)
-        {
-            try
-            {
-                return Math.Round(decimal.Parse(valor.Replace(".", ","), new CultureInfo("pt-BR")), 2);
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
-        }
-
         public static ResultadoDTO GerarDTO(string caminhoXML)
         {
             var resultado = new ResultadoDTO();
             var nfe = NFe.Utils.NFe.ExtNFe.CarregarDeArquivoXml(new NFe.Classes.NFe(), caminhoXML);
+
+            resultado.DataEmissao = nfe.infNFe.ide.dhEmi.DateTime;
+            resultado.Valor = nfe.infNFe.total.ICMSTot.vNF;
+            resultado.Emitente = nfe.infNFe.emit.xNome;
+            resultado.Numero = nfe.infNFe.ide.nNF;
+            resultado.Serie = nfe.infNFe.ide.serie;
+
 
             resultado.Fornecedor.Bairro = nfe.infNFe.emit.enderEmit.xBairro;
             resultado.Fornecedor.CEP = nfe.infNFe.emit.enderEmit.CEP;

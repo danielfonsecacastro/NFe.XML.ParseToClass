@@ -159,8 +159,6 @@ namespace NFe.XML.ParseToClass.Testes
             Assert.AreEqual(838.63M, resultado.Valor);
         }
 
-       
-
         [TestMethod]
         public void DeveriaGerarDadosUltimaFaturaCorretamenteParaNFe410()
         {
@@ -190,6 +188,30 @@ namespace NFe.XML.ParseToClass.Testes
             Assert.AreEqual("25/04/2017", resultado.Data.ToString("dd/MM/yyyy"));
             Assert.AreEqual("1  0002183874", resultado.NumeroFatura);
             Assert.AreEqual(722.00M, resultado.Valor);
+        }
+
+        [TestMethod]
+        public void DeveriaGerarInformacoesCabecalhoNfCorretamenteParaNFe310()
+        {
+            var resultado = Analizar.GerarDTO("teste310.XML");
+
+            Assert.AreEqual("08/12/2016", resultado.DataEmissao.ToString("dd/MM/yyyy"));
+            Assert.AreEqual(2891.45M, resultado.Valor);
+            Assert.AreEqual("Enrico e Olivia Mudanças ME.", resultado.Emitente);
+            Assert.AreEqual(218387, resultado.Numero);
+            Assert.AreEqual(1, resultado.Serie);
+        }
+
+        [TestMethod]
+        public void DeveriaGerarInformacoesCabecalhoNfCorretamenteParaNFe400()
+        {
+            var resultado = Analizar.GerarDTO("teste400.XML");
+
+            Assert.AreEqual("10/05/2019", resultado.DataEmissao.ToString("dd/MM/yyyy"));
+            Assert.AreEqual(2164.61M, resultado.Valor);
+            Assert.AreEqual("Laís e Pedro Henrique Comercio de Bebidas ME", resultado.Emitente);
+            Assert.AreEqual(9999, resultado.Numero);
+            Assert.AreEqual(1, resultado.Serie);
         }
     }
 }
