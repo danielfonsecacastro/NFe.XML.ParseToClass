@@ -101,7 +101,7 @@ namespace NFeXML.ParseToClass
                     Nome = item.prod.xProd,
                     Quantidade = item.prod.qCom,
                     Unidade = item.prod.uCom,
-                    Valor = item.prod.vUnTrib.Arredondar(2),
+                    Valor = item.prod.vUnCom.Arredondar(2),
                     ValorIPI = item.imposto.IPI != null ? ObterValorIPI(item.imposto.IPI.TipoIPI).Arredondar(2) : 0,
                     ValorICMSST = item.imposto.ICMS != null ? ObterValorICMSST(item.imposto.ICMS.TipoICMS).Arredondar(2) : 0,
                 };
