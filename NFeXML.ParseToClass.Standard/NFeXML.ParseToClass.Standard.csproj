@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Daniel Fonseca Castro</Authors>
     <Product></Product>
@@ -9,6 +9,7 @@
     <Description>Gerar um DTO com nomes mais limpos e logicos para facilitar a importação de dados a partir de um XML de NFe. Atualmente suporta as versões NFe 3.10 e 4.00</Description>
     <PackageProjectUrl>https://github.com/danielfonsecacastro/NFe.XML.ParseToClass</PackageProjectUrl>
     <RepositoryUrl>https://github.com/danielfonsecacastro/NFe.XML.ParseToClass</RepositoryUrl>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
