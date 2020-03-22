@@ -1,22 +1,19 @@
-﻿using NFe.Classes.Servicos.DistribuicaoDFe.Schemas;
+﻿using NFe.Classes;
+using NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual;
+using NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual.Tipos;
+using NFe.Classes.Informacoes.Detalhe.Tributacao.Federal;
+using NFe.Classes.Informacoes.Detalhe.Tributacao.Federal.Tipos;
 using nfeV400;
-using NFeXML.ParseToClass.DTOs;
+using NFeXML.ParseToClass.Standard.DTOs;
 using System;
-using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using NFe.Utils;
-using NFe.Classes.Informacoes.Detalhe.Tributacao.Federal.Tipos;
-using NFe.Classes.Informacoes.Detalhe.Tributacao.Federal;
-using NFe.Classes;
-using NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual.Tipos;
-using NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual;
 
-namespace NFeXML.ParseToClass
+namespace NFeXML.ParseToClass.Standard
 {
-    public class Analizar
+    public class Analisar
     {
         public static TNFe Nfe400(string caminhoXML)
         {

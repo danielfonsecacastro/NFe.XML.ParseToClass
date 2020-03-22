@@ -73,7 +73,7 @@
     <Compile Include="DTOs\ResultadoDTO.cs" />
     <Compile Include="NFe310.cs" />
     <Compile Include="NFeV400.cs" />
-    <Compile Include="Analizar.cs" />
+    <Compile Include="Analisar.cs" />
     <Compile Include="DTOs\ProdutoDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

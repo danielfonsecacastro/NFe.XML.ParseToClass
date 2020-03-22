@@ -7,12 +7,12 @@ using NFeXML.ParseToClass;
 namespace NFe.XML.ParseToClass.Testes
 {
     [TestClass]
-    public class AnalizarTestes
+    public class AnalisarTestes
     {
         [TestMethod]
         public void DeveriaConter34DetalhesNFe400()
         {
-            var resultado = Analizar.Nfe400("teste400.XML");
+            var resultado = Analisar.Nfe400("teste400.XML");
 
             Assert.IsTrue(resultado.infNFe.det.Count() == 36);
         }
@@ -20,7 +20,7 @@ namespace NFe.XML.ParseToClass.Testes
         [TestMethod]
         public void DeveriaConter27DetalhesNFe310()
         {
-            var resultado = Analizar.Nfe310("teste310.XML");
+            var resultado = Analisar.Nfe310("teste310.XML");
 
             Assert.IsTrue(resultado.infNFe.det.Count() == 27);
         }
@@ -28,7 +28,7 @@ namespace NFe.XML.ParseToClass.Testes
         [TestMethod]
         public void DeveriaGerarEnderecoForncedorCorretamenteParaNFe400()
         {
-            var resultado = Analizar.GerarDTO("teste400.XML");
+            var resultado = Analisar.GerarDTO("teste400.XML");
 
             Assert.AreEqual("VL STA CATARINA", resultado.Fornecedor.Bairro);
             Assert.AreEqual("04376006", resultado.Fornecedor.CEP);
@@ -43,7 +43,7 @@ namespace NFe.XML.ParseToClass.Testes
         [TestMethod]
         public void DeveriaGerarDadosForncedorCorretamenteParaNFe400()
         {
-            var resultado = Analizar.GerarDTO("teste400.XML");
+            var resultado = Analisar.GerarDTO("teste400.XML");
 
             Assert.AreEqual("49748689000126", resultado.Fornecedor.CNPJ);
             Assert.AreEqual("489021200990", resultado.Fornecedor.IE);
@@ -54,7 +54,7 @@ namespace NFe.XML.ParseToClass.Testes
         [TestMethod]
         public void DeveriaGerarEnderecoForncedorCorretamenteParaNFe310()
         {
-            var resultado = Analizar.GerarDTO("teste310.XML");
+            var resultado = Analisar.GerarDTO("teste310.XML");
 
             Assert.AreEqual("Vila São João", resultado.Fornecedor.Bairro);
             Assert.AreEqual("05308000", resultado.Fornecedor.CEP);
@@ -69,7 +69,7 @@ namespace NFe.XML.ParseToClass.Testes
         [TestMethod]
         public void DeveriaGerarDadosForncedorCorretamenteParaNFe310()
         {
-            var resultado = Analizar.GerarDTO("teste310.XML");
+            var resultado = Analisar.GerarDTO("teste310.XML");
 
             Assert.AreEqual("65952835000197", resultado.Fornecedor.CNPJ);
             Assert.AreEqual("569927446281", resultado.Fornecedor.IE);
@@ -80,7 +80,7 @@ namespace NFe.XML.ParseToClass.Testes
         [TestMethod]
         public void DeveriaGerarDadosPrimeiroProdutoCorretamenteParaNFe410()
         {
-            var resultado = Analizar.GerarDTO("teste400.XML").Produtos.First();
+            var resultado = Analisar.GerarDTO("teste400.XML").Produtos.First();
 
             Assert.AreEqual("2445-055", resultado.Codigo);
             Assert.AreEqual("7899033234918", resultado.CodigoEAN);
@@ -94,7 +94,7 @@ namespace NFe.XML.ParseToClass.Testes
         [TestMethod]
         public void DeveriaGerarDadosUltimoProdutoCorretamenteParaNFe410()
         {
-            var resultado = Analizar.GerarDTO("teste400.XML").Produtos.Last();
+            var resultado = Analisar.GerarDTO("teste400.XML").Produtos.Last();
 
             Assert.AreEqual("4267-055", resultado.Codigo);
             Assert.AreEqual("7899033272743", resultado.CodigoEAN);
@@ -108,7 +108,7 @@ namespace NFe.XML.ParseToClass.Testes
         [TestMethod]
         public void DeveriaGerarDadosUltimoProdutoCorretamenteParaNFe410NullException()
         {
-            var resultado = Analizar.GerarDTO("teste400NullException.XML").Produtos.Last();
+            var resultado = Analisar.GerarDTO("teste400NullException.XML").Produtos.Last();
 
             Assert.AreEqual("002638", resultado.Codigo);
             Assert.AreEqual("SEM GTIN", resultado.CodigoEAN);
@@ -123,7 +123,7 @@ namespace NFe.XML.ParseToClass.Testes
         [TestMethod]
         public void DeveriaGerarDadosPrimeiroProdutoCorretamenteParaNFe310()
         {
-            var resultado = Analizar.GerarDTO("teste310.XML").Produtos.First();
+            var resultado = Analisar.GerarDTO("teste310.XML").Produtos.First();
 
             Assert.AreEqual("39069", resultado.Codigo);
             Assert.AreEqual("", resultado.CodigoEAN);
@@ -137,7 +137,7 @@ namespace NFe.XML.ParseToClass.Testes
         [TestMethod]
         public void DeveriaGerarDadosUltimoProdutoCorretamenteParaNFe310()
         {
-            var resultado = Analizar.GerarDTO("teste310.XML").Produtos.Last();
+            var resultado = Analisar.GerarDTO("teste310.XML").Produtos.Last();
 
             Assert.AreEqual("6430", resultado.Codigo);
             Assert.AreEqual("", resultado.CodigoEAN);
@@ -152,7 +152,7 @@ namespace NFe.XML.ParseToClass.Testes
         [TestMethod]
         public void DeveriaGerarDadosPrimeiraFaturaCorretamenteParaNFe410()
         {
-            var resultado = Analizar.GerarDTO("teste400.XML").Faturas.First();
+            var resultado = Analisar.GerarDTO("teste400.XML").Faturas.First();
 
             Assert.AreEqual("09/06/2019", resultado.Data.ToString("dd/MM/yyyy"));
             Assert.AreEqual("001", resultado.NumeroFatura);
@@ -162,7 +162,7 @@ namespace NFe.XML.ParseToClass.Testes
         [TestMethod]
         public void DeveriaGerarDadosUltimaFaturaCorretamenteParaNFe410()
         {
-            var resultado = Analizar.GerarDTO("teste400.XML").Faturas.Last();
+            var resultado = Analisar.GerarDTO("teste400.XML").Faturas.Last();
 
             Assert.AreEqual("08/08/2019", resultado.Data.ToString("dd/MM/yyyy"));
             Assert.AreEqual("003", resultado.NumeroFatura);
@@ -173,7 +173,7 @@ namespace NFe.XML.ParseToClass.Testes
         [TestMethod]
         public void DeveriaGerarDadosPrimeiraFaturaCorretamenteParaNFe310()
         {
-            var resultado = Analizar.GerarDTO("teste310.XML").Faturas.First();
+            var resultado = Analisar.GerarDTO("teste310.XML").Faturas.First();
 
             Assert.AreEqual("25/01/2017", resultado.Data.ToString("dd/MM/yyyy"));
             Assert.AreEqual("1  0002183871", resultado.NumeroFatura);
@@ -183,7 +183,7 @@ namespace NFe.XML.ParseToClass.Testes
         [TestMethod]
         public void DeveriaGerarDadosUltimaFaturaCorretamenteParaNFe310()
         {
-            var resultado = Analizar.GerarDTO("teste310.XML").Faturas.Last();
+            var resultado = Analisar.GerarDTO("teste310.XML").Faturas.Last();
 
             Assert.AreEqual("25/04/2017", resultado.Data.ToString("dd/MM/yyyy"));
             Assert.AreEqual("1  0002183874", resultado.NumeroFatura);
@@ -193,7 +193,7 @@ namespace NFe.XML.ParseToClass.Testes
         [TestMethod]
         public void DeveriaGerarInformacoesCabecalhoNfCorretamenteParaNFe310()
         {
-            var resultado = Analizar.GerarDTO("teste310.XML");
+            var resultado = Analisar.GerarDTO("teste310.XML");
 
             Assert.AreEqual("08/12/2016", resultado.DataEmissao.ToString("dd/MM/yyyy"));
             Assert.AreEqual(2891.45M, resultado.Valor);
@@ -205,7 +205,7 @@ namespace NFe.XML.ParseToClass.Testes
         [TestMethod]
         public void DeveriaGerarInformacoesCabecalhoNfCorretamenteParaNFe400()
         {
-            var resultado = Analizar.GerarDTO("teste400.XML");
+            var resultado = Analisar.GerarDTO("teste400.XML");
 
             Assert.AreEqual("10/05/2019", resultado.DataEmissao.ToString("dd/MM/yyyy"));
             Assert.AreEqual(2164.61M, resultado.Valor);
