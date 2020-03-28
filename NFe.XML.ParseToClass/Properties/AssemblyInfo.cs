@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("NFe.XML.ParseToClass")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Gerar um DTO com nomes mais limpos e logicos para facilitar a importação de dados a partir de um XML de NFe. Atualmente suporta as versões NFe 3.10 e 4.00")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("NFe.XML.ParseToClass")]
