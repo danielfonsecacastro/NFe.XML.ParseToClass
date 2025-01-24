@@ -213,5 +213,14 @@ namespace NFe.XML.ParseToClass.Testes
             Assert.AreEqual(9999, resultado.Numero);
             Assert.AreEqual(1, resultado.Serie);
         }
+
+        [TestMethod]
+        public void DeveLerCorretamenteQuandoCRTForIgual4()
+        {
+            var resultado = Analisar.GerarDTO("teste400_1.XML");
+
+            Assert.AreEqual(16, resultado.Numero);
+            Assert.AreEqual(4, resultado.Serie);
+        }
     }
 }

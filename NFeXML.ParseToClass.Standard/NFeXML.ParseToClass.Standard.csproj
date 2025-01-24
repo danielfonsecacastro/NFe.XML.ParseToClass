@@ -9,11 +9,11 @@
     <Description>Gerar um DTO com nomes mais limpos e logicos para facilitar a importação de dados a partir de um XML de NFe. Atualmente suporta as versões NFe 3.10 e 4.00</Description>
     <PackageProjectUrl>https://github.com/danielfonsecacastro/NFe.XML.ParseToClass</PackageProjectUrl>
     <RepositoryUrl>https://github.com/danielfonsecacastro/NFe.XML.ParseToClass</RepositoryUrl>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Zeus.Net.NFe.NFCe" Version="1.0.1.1007" />
+    <PackageReference Include="Zeus.Net.NFe.NFCe" Version="2025.1.10.1054" />
   </ItemGroup>
 
 </Project>

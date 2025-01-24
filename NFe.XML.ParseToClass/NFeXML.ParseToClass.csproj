@@ -3,7 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <PackageId>NFe.XML.ParseToClass</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Daniel Fonseca Castro</Authors>
     <Company>Bitcaseiro</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NFeXML.ParseToClass</RootNamespace>
     <AssemblyName>NFeXML.ParseToClass</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -37,26 +37,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DFe.Classes, Version=1.0.0.756, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.NFe.NFCe.1.0.1.902\lib\net40\DFe.Classes.dll</HintPath>
+    <Reference Include="DFe.Classes, Version=2025.1.10.1054, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2025.1.10.1054\lib\net462\DFe.Classes.dll</HintPath>
     </Reference>
-    <Reference Include="DFe.Utils, Version=1.0.0.756, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.NFe.NFCe.1.0.1.902\lib\net40\DFe.Utils.dll</HintPath>
+    <Reference Include="DFe.Utils, Version=2025.1.10.1054, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2025.1.10.1054\lib\net462\DFe.Utils.dll</HintPath>
     </Reference>
-    <Reference Include="DFe.Wsdl, Version=1.0.0.756, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.NFe.NFCe.1.0.1.902\lib\net40\DFe.Wsdl.dll</HintPath>
+    <Reference Include="DFe.Wsdl, Version=2025.1.10.1054, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2025.1.10.1054\lib\net462\DFe.Wsdl.dll</HintPath>
     </Reference>
-    <Reference Include="NFe.Classes, Version=1.0.0.756, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.NFe.NFCe.1.0.1.902\lib\net40\NFe.Classes.dll</HintPath>
+    <Reference Include="NFe.Classes, Version=2025.1.10.1054, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2025.1.10.1054\lib\net462\NFe.Classes.dll</HintPath>
     </Reference>
-    <Reference Include="NFe.Servicos, Version=1.0.0.756, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.NFe.NFCe.1.0.1.902\lib\net40\NFe.Servicos.dll</HintPath>
+    <Reference Include="NFe.Servicos, Version=2025.1.10.1054, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2025.1.10.1054\lib\net462\NFe.Servicos.dll</HintPath>
     </Reference>
-    <Reference Include="NFe.Utils, Version=1.0.0.756, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.NFe.NFCe.1.0.1.902\lib\net40\NFe.Utils.dll</HintPath>
+    <Reference Include="NFe.Utils, Version=2025.1.10.1054, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2025.1.10.1054\lib\net462\NFe.Utils.dll</HintPath>
     </Reference>
-    <Reference Include="NFe.Wsdl, Version=1.0.0.756, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zeus.Net.NFe.NFCe.1.0.1.902\lib\net40\NFe.Wsdl.dll</HintPath>
+    <Reference Include="NFe.Wsdl, Version=2025.1.10.1054, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2025.1.10.1054\lib\net462\NFe.Wsdl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
