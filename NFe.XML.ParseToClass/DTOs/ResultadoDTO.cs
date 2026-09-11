@@ -9,6 +9,7 @@ namespace NFeXML.ParseToClass.DTOs
         {
             Produtos = new List<ProdutoDTO>();
             Fornecedor = new FornecedorDTO();
+            Pagamentos = new List<PagamentoDTO>();
             Faturas = new List<Fatura>();
         }
         
@@ -19,6 +20,7 @@ namespace NFeXML.ParseToClass.DTOs
         public decimal Valor { get; set; }
         public List<ProdutoDTO> Produtos { get; set; }
         public List<Fatura> Faturas { get; set; }
+        public List<PagamentoDTO> Pagamentos { get; set; }
         public FornecedorDTO Fornecedor { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-using NFeXML.ParseToClass.Standard;
+Ôªøusing NFeXML.ParseToClass.Standard;
 using NUnit.Framework;
 using System.Linq;
 
@@ -44,8 +44,8 @@ namespace NFe.XML.ParseToClass.Tests.Core
 
             Assert.AreEqual("49748689000126", resultado.Fornecedor.CNPJ);
             Assert.AreEqual("489021200990", resultado.Fornecedor.IE);
-            Assert.AreEqual("LaÌs e Pedro Henrique Comercio de Bebidas ME", resultado.Fornecedor.Nome);
-            Assert.AreEqual("LaÌsME", resultado.Fornecedor.NomeFantasia);
+            Assert.AreEqual("La√≠s e Pedro Henrique Comercio de Bebidas ME", resultado.Fornecedor.Nome);
+            Assert.AreEqual("La√≠sME", resultado.Fornecedor.NomeFantasia);
         }
 
         [Test]
@@ -53,7 +53,7 @@ namespace NFe.XML.ParseToClass.Tests.Core
         {
             var resultado = Analisar.GerarDTO("teste310.XML");
 
-            Assert.AreEqual("Vila S„o Jo„o", resultado.Fornecedor.Bairro);
+            Assert.AreEqual("Vila S√£o Jo√£o", resultado.Fornecedor.Bairro);
             Assert.AreEqual("05308000", resultado.Fornecedor.CEP);
             Assert.AreEqual("65952835000197", resultado.Fornecedor.CNPJ);
             Assert.AreEqual("569927446281", resultado.Fornecedor.IE);
@@ -70,7 +70,7 @@ namespace NFe.XML.ParseToClass.Tests.Core
 
             Assert.AreEqual("65952835000197", resultado.Fornecedor.CNPJ);
             Assert.AreEqual("569927446281", resultado.Fornecedor.IE);
-            Assert.AreEqual("Enrico e Olivia MudanÁas ME.", resultado.Fornecedor.Nome);
+            Assert.AreEqual("Enrico e Olivia Mudan√ßas ME.", resultado.Fornecedor.Nome);
             Assert.AreEqual("EnricoME", resultado.Fornecedor.NomeFantasia);
         }
 
@@ -145,6 +145,31 @@ namespace NFe.XML.ParseToClass.Tests.Core
             Assert.AreEqual(4.81M, resultado.Valor);
         }
 
+        [Test]
+        public void DeveriaGerarDadosPrimeiroPagamentoCorretamenteParaNFe410()
+        {
+            var resultado = Analisar.GerarDTO("teste400.XML").Pagamentos.First();
+
+            Assert.AreEqual("fpBoletoBancario", resultado.FormaPagamento);
+            Assert.AreEqual(838.63M, resultado.ValorPago);
+        }
+
+        [Test]
+        public void DeveriaGerarDadosUltimoPagamentoCorretamenteParaNFe410()
+        {
+            var resultado = Analisar.GerarDTO("teste400.XML").Pagamentos.Last();
+
+            Assert.AreEqual("fpBoletoBancario", resultado.FormaPagamento);
+            Assert.AreEqual(662.99M, resultado.ValorPago);
+        }
+
+        [Test]
+        public void DeveriaGerarPagamentosVazioParaNfe310()
+        {
+            var resultado = Analisar.GerarDTO("teste310.XML");
+
+            Assert.IsTrue(resultado.Pagamentos.Count == 0);
+        }
 
         [Test]
         public void DeveriaGerarDadosPrimeiraFaturaCorretamenteParaNFe410()
@@ -194,7 +219,7 @@ namespace NFe.XML.ParseToClass.Tests.Core
 
             Assert.AreEqual("08/12/2016", resultado.DataEmissao.ToString("dd/MM/yyyy"));
             Assert.AreEqual(2891.45M, resultado.Valor);
-            Assert.AreEqual("Enrico e Olivia MudanÁas ME.", resultado.Emitente);
+            Assert.AreEqual("Enrico e Olivia Mudan√ßas ME.", resultado.Emitente);
             Assert.AreEqual(218387, resultado.Numero);
             Assert.AreEqual(1, resultado.Serie);
         }
@@ -206,7 +231,7 @@ namespace NFe.XML.ParseToClass.Tests.Core
 
             Assert.AreEqual("10/05/2019", resultado.DataEmissao.ToString("dd/MM/yyyy"));
             Assert.AreEqual(2164.61M, resultado.Valor);
-            Assert.AreEqual("LaÌs e Pedro Henrique Comercio de Bebidas ME", resultado.Emitente);
+            Assert.AreEqual("La√≠s e Pedro Henrique Comercio de Bebidas ME", resultado.Emitente);
             Assert.AreEqual(9999, resultado.Numero);
             Assert.AreEqual(1, resultado.Serie);
         }

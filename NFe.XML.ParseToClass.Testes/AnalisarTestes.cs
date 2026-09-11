@@ -148,6 +148,31 @@ namespace NFe.XML.ParseToClass.Testes
             Assert.AreEqual(4.81M, resultado.Valor);
         }
 
+        [TestMethod]
+        public void DeveriaGerarDadosPrimeiroPagamentoCorretamenteParaNFe410()
+        {
+            var resultado = Analisar.GerarDTO("teste400.XML").Pagamentos.First();
+
+            Assert.AreEqual("fpBoletoBancario", resultado.FormaPagamento);
+            Assert.AreEqual(838.63M, resultado.ValorPago);
+        }
+
+        [TestMethod]
+        public void DeveriaGerarDadosUltimoPagamentoCorretamenteParaNFe410()
+        {
+            var resultado = Analisar.GerarDTO("teste400.XML").Pagamentos.Last();
+
+            Assert.AreEqual("fpBoletoBancario", resultado.FormaPagamento);
+            Assert.AreEqual(662.99M, resultado.ValorPago);
+        }
+
+        [TestMethod]
+        public void DeveriaGerarPagamentosVazioParaNfe310()
+        {
+            var resultado = Analisar.GerarDTO("teste310.XML");
+
+            Assert.IsTrue(resultado.Pagamentos.Count == 0);
+        }
 
         [TestMethod]
         public void DeveriaGerarDadosPrimeiraFaturaCorretamenteParaNFe410()
