@@ -3,10 +3,12 @@ using NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual;
 using NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual.Tipos;
 using NFe.Classes.Informacoes.Detalhe.Tributacao.Federal;
 using NFe.Classes.Informacoes.Detalhe.Tributacao.Federal.Tipos;
+using NFe.Classes.Informacoes.Pagamento;
 using nfeV400;
 using NFeXML.ParseToClass.Standard.DTOs;
 using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
@@ -116,6 +118,24 @@ namespace NFeXML.ParseToClass.Standard
                         NumeroFatura = item.nDup,
                         Valor = item.vDup
                     });
+                }
+            }
+
+            if (nfe.infNFe != null && nfe.infNFe.pag != null)
+            {
+                foreach (var pag in nfe.infNFe.pag)
+                {
+                    if (pag.detPag != null)
+                    {
+                        foreach (var item in pag.detPag)
+                        {
+                            resultado.Pagamentos.Add(new PagamentoDTO
+                            {
+                                ValorPago = item.vPag,
+                                FormaPagamento = item.tPag.ToString(),
+                            });
+                        }
+                    }
                 }
             }
 

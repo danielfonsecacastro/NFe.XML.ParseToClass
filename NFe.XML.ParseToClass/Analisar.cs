@@ -122,6 +122,24 @@ namespace NFeXML.ParseToClass
                 }
             }
 
+            if (nfe.infNFe != null && nfe.infNFe.pag != null)
+            {
+                foreach (var pag in nfe.infNFe.pag)
+                {
+                    if (pag.detPag != null)
+                    {
+                        foreach (var item in pag.detPag)
+                        {
+                            resultado.Pagamentos.Add(new PagamentoDTO
+                            {
+                                ValorPago = item.vPag,
+                                FormaPagamento = item.tPag.ToString(),
+                            });
+                        }
+                    }
+                }
+            }
+
             return resultado;
         }
 
