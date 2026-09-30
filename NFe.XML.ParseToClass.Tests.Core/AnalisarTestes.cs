@@ -244,5 +244,29 @@ namespace NFe.XML.ParseToClass.Tests.Core
             Assert.AreEqual(16, resultado.Numero);
             Assert.AreEqual(4, resultado.Serie);
         }
+
+        [Test]
+        public void DeveriaLerCorretamenteInformacoesAdicionaisProdutoQuandoPossuiParaNFe400()
+        {
+            var resultado = Analisar.GerarDTO("teste400.XML");
+
+            Assert.AreEqual("M5X65MM", resultado.Produtos[0].InformacoesAdicionais);
+            Assert.AreEqual("EM ALUMINIO 2 LADOS PRETA 130MM PAR", resultado.Produtos[1].InformacoesAdicionais);
+            Assert.AreEqual("KIT COM 3 PCS", resultado.Produtos[2].InformacoesAdicionais);
+            Assert.AreEqual("PARA GARFO OVER AHEADSET XM 5MM 10 PCS", resultado.Produtos[3].InformacoesAdicionais);
+            Assert.AreEqual("COMPATIVEL FORMULA THE ONE MEGA.PAR", resultado.Produtos[4].InformacoesAdicionais);
+        }
+
+        [Test]
+        public void DeveriaLerCorretamenteInformacoesAdicionaisProdutoQuandoNaoPossuiParaNFe310()
+        {
+            var resultado = Analisar.GerarDTO("teste310.XML");
+
+            Assert.IsNull(resultado.Produtos[0].InformacoesAdicionais);
+            Assert.IsNull(resultado.Produtos[1].InformacoesAdicionais);
+            Assert.IsNull(resultado.Produtos[2].InformacoesAdicionais);
+            Assert.IsNull(resultado.Produtos[3].InformacoesAdicionais);
+            Assert.IsNull(resultado.Produtos[4].InformacoesAdicionais);
+        }
     }
 }
