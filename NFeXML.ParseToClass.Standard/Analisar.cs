@@ -98,6 +98,7 @@ namespace NFeXML.ParseToClass.Standard
                     CodigoEAN = item.prod.cEAN,
                     NCM = item.prod.NCM,
                     Nome = item.prod.xProd,
+                    InformacoesAdicionais = item.infAdProd,
                     Quantidade = item.prod.qCom,
                     Unidade = item.prod.uCom,
                     Valor = item.prod.vUnCom.Arredondar(2),
