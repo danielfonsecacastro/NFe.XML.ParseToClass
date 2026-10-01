@@ -268,5 +268,25 @@ namespace NFe.XML.ParseToClass.Tests.Core
             Assert.IsNull(resultado.Produtos[3].InformacoesAdicionais);
             Assert.IsNull(resultado.Produtos[4].InformacoesAdicionais);
         }
+
+        [Test]
+        public void DeveriaLerCorretamenteInformacoesAdicionaisNFeQuandoPossuiParaNFe400()
+        {
+            var resultado = Analisar.GerarDTO("teste400.XML");
+
+            var informacoesAdicionaisEsperadas = "DANFE PARA TODAS AS OPERACOES. - PEDIDO(S): 2961 - PEDIDO(S) INTERNO(S): 2347 -  - Codigo do cliente: 8254 -";
+
+            Assert.AreEqual(informacoesAdicionaisEsperadas, resultado.InformacoesAdicionais);
+        }
+
+        [Test]
+        public void DeveriaLerCorretamenteInformacoesAdicionaisNFeQuandoPossuiParaNFe310()
+        {
+            var resultado = Analisar.GerarDTO("teste310.XML");
+
+            var informacoesAdicionaisEsperadas = "BASE DE CALCULO DO ICMS REDUZIDA CONF. ART. 30 DO ANEXO II DO RICMS/00 IMPOSTO RETIDO POR SUBSTITUICAO TRIBUTARIA ARTIGO 313-Z5 RICMS/00 003 -  PEDIDO 149842 - REPRESENTANTE 8 ZANINI BIKE REPRESENTACOES LTDA - ME - COND PAGTO 171 - ENDERECO ENTREGA RUA SARGENTO JOSE SPESSATO  25 BAIRRO VL.MARIANA MUNICIPIO SAO PAULO/SP CEP 04016060 - ENDERECO COBRANCA RUA SARGENTO JOSE SPESSATO  25A MESMA -";
+
+            Assert.AreEqual(informacoesAdicionaisEsperadas, resultado.InformacoesAdicionais);
+        }
     }
 }

@@ -74,7 +74,7 @@ namespace NFeXML.ParseToClass.Standard
             resultado.Emitente = nfe.infNFe.emit.xNome;
             resultado.Numero = nfe.infNFe.ide.nNF;
             resultado.Serie = nfe.infNFe.ide.serie;
-
+            resultado.InformacoesAdicionais = nfe.infNFe.infAdic.infCpl;
 
             resultado.Fornecedor.Bairro = nfe.infNFe.emit.enderEmit.xBairro;
             resultado.Fornecedor.CEP = nfe.infNFe.emit.enderEmit.CEP;
