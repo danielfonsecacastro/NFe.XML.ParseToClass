@@ -22,5 +22,6 @@ namespace NFeXML.ParseToClass.DTOs
         public List<Fatura> Faturas { get; set; }
         public List<PagamentoDTO> Pagamentos { get; set; }
         public FornecedorDTO Fornecedor { get; set; }
+        public string InformacoesAdicionais { get; set; }
     }
 }
