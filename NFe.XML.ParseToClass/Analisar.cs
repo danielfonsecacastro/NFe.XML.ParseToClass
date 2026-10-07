@@ -105,6 +105,7 @@ namespace NFeXML.ParseToClass
                     Valor = item.prod.vUnCom.Arredondar(2),
                     ValorIPI = item.imposto.IPI != null ? ObterValorIPI(item.imposto.IPI.TipoIPI).Arredondar(2) : 0,
                     ValorICMSST = item.imposto.ICMS != null ? ObterValorICMSST(item.imposto.ICMS.TipoICMS).Arredondar(2) : 0,
+                    CFOP = item.prod.CFOP,
                 };
 
                 resultado.Produtos.Add(produto);
