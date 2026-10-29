@@ -71,6 +71,7 @@
     <Compile Include="DTOs\Fatura.cs" />
     <Compile Include="DTOs\FornecedorDTO.cs" />
     <Compile Include="DTOs\PagamentoDTO.cs" />
+    <Compile Include="DTOs\ProdutoVeiculoDTO.cs" />
     <Compile Include="DTOs\ResultadoDTO.cs" />
     <Compile Include="NFe310.cs" />
     <Compile Include="NFeV400.cs" />

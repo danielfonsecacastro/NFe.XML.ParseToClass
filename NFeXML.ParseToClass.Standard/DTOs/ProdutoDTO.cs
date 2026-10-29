@@ -16,6 +16,7 @@ namespace NFeXML.ParseToClass.Standard.DTOs
         public decimal ValorIPI { get; set; }
         public decimal ValorICMSST { get; set; }
         public string InformacoesAdicionais { get; set; }
+        public ProdutoVeiculoDTO Veiculo { get; set; }
         public int CFOP { get; set; }
     }
 }
