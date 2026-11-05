@@ -13,6 +13,9 @@ using NFe.Classes.Informacoes.Detalhe.Tributacao.Federal;
 using NFe.Classes;
 using NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual.Tipos;
 using NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual;
+using System.Linq;
+using NFe.Classes.Informacoes.Detalhe.ProdEspecifico;
+using NFe.Classes.Informacoes.Detalhe;
 
 namespace NFeXML.ParseToClass
 {
@@ -106,6 +109,7 @@ namespace NFeXML.ParseToClass
                     ValorIPI = item.imposto.IPI != null ? ObterValorIPI(item.imposto.IPI.TipoIPI).Arredondar(2) : 0,
                     ValorICMSST = item.imposto.ICMS != null ? ObterValorICMSST(item.imposto.ICMS.TipoICMS).Arredondar(2) : 0,
                     CFOP = item.prod.CFOP,
+                    Veiculo = LerProdutoVeiculo(item),
                 };
 
                 resultado.Produtos.Add(produto);
@@ -143,6 +147,50 @@ namespace NFeXML.ParseToClass
             }
 
             return resultado;
+        }
+
+        private static ProdutoVeiculoDTO LerProdutoVeiculo(det item)
+        {
+            try
+            {
+                var dados = item.prod.ProdutoEspecifico?.OfType<veicProd>()?.FirstOrDefault();
+                if (dados is null)
+                {
+                    return default;
+                }
+
+                var veiculo = new ProdutoVeiculoDTO
+                {
+                    Chassi = dados.chassi,
+                    NumeroSerie = dados.nSerie,
+                    NumeroMotor = dados.nMotor,
+                    IdentificadorVIN = dados.VIN == CondicaoVin.Remarcado ? "R" : "N",
+                    AnoFabricacao = dados.anoFab,
+                    AnoModelo = dados.anoMod,
+                    CodigoModelo = dados.cMod,
+                    CondicaoVeiculo = $"{(int)dados.condVeic}",
+                    TipoVeiculo = dados.tpVeic,
+                    EspecieVeiculo = dados.espVeic.ToString(),
+                    TipoCombustivel = dados.tpComb,
+                    TipoPintura = dados.tpPint,
+                    LotacaoMaxima = dados.lota,
+                    PotenciaMotor = dados.pot,
+                    DistanciaEntreEixos = dados.dist,
+                    TipoOperacao = $"{(int)dados.tpOp}",
+                    CodigoCor = dados.cCor,
+                    DescricaoCor = dados.xCor,
+                    TipoRestricao = $"{(int)dados.tpRest}",
+                };
+
+                int.TryParse(dados.cilin, out int cilindrada);
+                veiculo.Cilindradas = cilindrada != 0 ? cilindrada : (int?)null;
+
+                return veiculo;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         private static decimal ObterValorICMSST(ICMSBasico tipoICMS)
